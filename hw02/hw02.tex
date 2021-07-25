@@ -3,7 +3,7 @@
 \usepackage{physics}
 \usepackage{graphicx}
 \usepackage{amsmath}
-
+\usepackage{cancel}
 %code color
 \usepackage{listings}
 \usepackage{xcolor}
@@ -46,6 +46,15 @@
 		Ans:
 		\begin{itemize}
 			\item Measurement results of entangled qubits are correlated.
+			$$\ket{B_{00000} } =  \frac{1}{\sqrt{2}}\ket{01010} + \frac{1}{\sqrt{2}}\ket{10101} \implies 
+			\begin{cases}
+				P(0) =  \left|\frac{1}{\sqrt{2}}\right|^2 = \frac{1}{2}\\
+				P(1) =  \left|\frac{1}{\sqrt{2}}\right|^2 = \frac{1}{2}
+			\end{cases}
+			$$
+			
+			if we measure first qubit and get outcome 0. Calculate the post-measurement state of the qubit pair by removing the term which is no-consistent with the measurement result.
+			$$\ket{B_{00000} } = \frac{1}{\sqrt{2}}\ket{01010} + \cancel{\frac{1}{\sqrt{2}}\ket{10101}} \implies \frac{\frac{1}{\sqrt{2}}\ket{01010}}{\sqrt{\left|\frac{1}{\sqrt{2}}\right|^2}} = \ket{01010}$$
 			\item Partial and simultaneous measurements give the same outcome.
 			
 			\begin{align}
