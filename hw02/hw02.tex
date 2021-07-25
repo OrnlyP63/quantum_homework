@@ -1,0 +1,79 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{physics}
+\usepackage{graphicx}
+
+%code color
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+	\begin{center}
+		Test 2  Entanglement
+	\end{center}
+	
+	Mr. Phiphat Chomchit
+	\begin{enumerate}
+		\item Suppose you have 5 qubits in the state  $\ket{\Psi} = \frac{1}{\sqrt{2}}\ket{01010} + \ket{10101} .$ Is state $\ket{\Psi}$ entangled? Why?\\
+		
+		Ans:
+		
+		\item Write a program to generate $\ket{\Psi}$, run it 1024 times, and come up with an example how to use it in quantum communication.
+		\begin{lstlisting}[language=Python, caption=IBM Q code]
+			OPENQASM 2.0;
+			include "qelib1.inc";
+			
+			qreg q[5];
+			creg c[5];
+			
+			h q[0];
+			x q[1];
+			x q[3];
+			cx q[0],q[1];
+			cx q[0],q[2];
+			cx q[0],q[3];
+			cx q[0],q[4];
+			measure q[0] -> c[0];
+			measure q[1] -> c[1];
+			measure q[2] -> c[2];
+			measure q[3] -> c[3];
+			measure q[4] -> c[4];
+		\end{lstlisting}
+	
+			\begin{figure}
+				 \centering
+				\includegraphics[scale=0.3]{circuit-krik226j.png}
+				\caption{quantum circuit}
+				\includegraphics[scale=0.2]{bar-chart.png}
+				\caption{result}
+			\end{figure}
+
+		
+	\end{enumerate}
+\end{document}
