@@ -43,7 +43,7 @@
 	\begin{enumerate}
 		\item Suppose you have 5 qubits in the state  $\ket{\Psi} = \frac{1}{\sqrt{2}}\ket{01010} + \frac{1}{\sqrt{2}}\ket{10101} .$ Is state $\ket{\Psi}$ entangled? Why?\\
 		
-		Ans:
+		Ans: $\ket{\Psi}$ is entangled.
 		\begin{itemize}
 			\item Measurement results of entangled qubits are correlated.
 			$$\ket{B_{00000} } =  \frac{1}{\sqrt{2}}\ket{01010} + \frac{1}{\sqrt{2}}\ket{10101} \implies 
@@ -113,6 +113,16 @@
 				\caption{result}
 			\end{figure}
 
-		
+		\begin{itemize}
+			\item Quantum communication.
+			
+			We can created an entangled 5 qubits $\ket{B_{00000} }$ that we give them to $c_1, c_2, c_3, c_4, c_5$.
+			
+			We measure a qubit of $c_1$ and get random single bit result. We know that $c_3$ and $c_5$ measure their qubit, they will get the same result, but $c_2$ and $c_4$ measure their qubit, they will get the different result.
+			
+			To make sure $c_2,  c_3, c_4, c_5$ get a the correct message, We calls them over a phone line to tell them how to interpret their measurment result.
+			
+			If Our bit ($c_1$) corrsepinds to the message we want to send , then we tell $c_2,  c_3, c_4, c_5$ their measurement represents the correct message. In the other hand, if our bit ($c_1$) not correspind to the message we want to send, we tell them to invert their bit ($0$ become $1$ or$1$ become $0$ )
+		\end{itemize}
 	\end{enumerate}
 \end{document}
