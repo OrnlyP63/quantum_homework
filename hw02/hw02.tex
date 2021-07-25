@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{physics}
 \usepackage{graphicx}
+\usepackage{amsmath}
 
 %code color
 \usepackage{listings}
@@ -38,12 +39,41 @@
 		Test 2  Entanglement
 	\end{center}
 	
-	Mr. Phiphat Chomchit
+	Mr. Phiphat Chomchit 630631028
 	\begin{enumerate}
-		\item Suppose you have 5 qubits in the state  $\ket{\Psi} = \frac{1}{\sqrt{2}}\ket{01010} + \ket{10101} .$ Is state $\ket{\Psi}$ entangled? Why?\\
+		\item Suppose you have 5 qubits in the state  $\ket{\Psi} = \frac{1}{\sqrt{2}}\ket{01010} + \frac{1}{\sqrt{2}}\ket{10101} .$ Is state $\ket{\Psi}$ entangled? Why?\\
 		
 		Ans:
-		
+		\begin{itemize}
+			\item Measurement results of entangled qubits are correlated.
+			\item Partial and simultaneous measurements give the same outcome.
+			
+			\begin{align}
+				P(01010) &= \left|\frac{1}{\sqrt{2}}\right|^2 = \frac{1}{2}\\
+				P(10101) &= \left|\frac{1}{\sqrt{2}}\right|^2 = \frac{1}{2}
+			\end{align}
+			\item The state of the entangled qubits cannot be written as the product of the signle-qubit states.
+			
+			Proof by contradiction.\\
+			Let $\ket{\Psi}$ can be written as the product of the single-qubit states and
+			$$\ket{S_i} = a_i\ket{0} + b_i\ket{1}$$
+			for $i = 1, 2, 3, 4, 5$\\
+			So, the product of single-qubit states is
+			$$\ket{S} = \ket{S_1}\ket{S_2}\ket{S_3}\ket{S_4}\ket{S_5}$$
+			
+			From "$\ket{\Psi}$ can be written as the product of the single-qubit states". So
+			
+			\begin{align}
+				\ket{\Psi} &= \ket{S}\\
+				 \frac{1}{\sqrt{2}}\ket{01010} + \frac{1}{\sqrt{2}}\ket{10101} &= \ket{S}
+			\end{align}
+			This implies $a_1b_2a_3b_4a_5 = b_1a_2b_3a_4b_5 = \frac{1}{\sqrt{2}}$, otherwise $0$.\\
+			Consider $a_1a_2a_3a_4a_5 = 0$ That is $a_i = 0$ for some $i \in \{1,2,3,4,5\}$
+			case: $a_i = 0$ when $i$ is odd number. Then $a_1b_2a_3b_4a_5 = 0$.\\
+			case: $a_i = 0$ when $i$ is even number. Then $b_1a_2b_3a_4b_5 = 0$.\\
+			Contradiction, therefore $\ket{\Psi}$ cannot be written as the product of the single-qubit states
+		\end{itemize}
+
 		\item Write a program to generate $\ket{\Psi}$, run it 1024 times, and come up with an example how to use it in quantum communication.
 		\begin{lstlisting}[language=Python, caption=IBM Q code]
 			OPENQASM 2.0;
