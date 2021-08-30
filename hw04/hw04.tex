@@ -1,0 +1,162 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{cancel}
+%code color
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+	\begin{center}
+		Test 4  Unitary Transformations \& Multi-qubits system
+	\end{center}
+	
+	Mr. Phiphat Chomchit 630631028
+	\begin{enumerate}
+		\item Define Hadamard gate $H$:
+		\begin{equation*}
+			H = \frac{1}{\sqrt{2}}\begin{pmatrix}
+			1 & 1\\
+			1 & -1
+		\end{pmatrix}
+		\end{equation*}
+		
+		Show $H$ is unitary.\\
+		
+		Ans: Consider
+		\begin{align*}
+			H^T H &=  \frac{1}{\sqrt{2}}
+			\begin{pmatrix}
+				1 & 1\\
+				1 & -1
+			\end{pmatrix}
+			 \frac{1}{\sqrt{2}}
+			 \begin{pmatrix}
+				1 & 1\\
+				1 & -1
+			\end{pmatrix}\\
+				& = \frac{1}{\sqrt{2}^2}
+						\begin{pmatrix}
+							1 & 1\\
+							1 & -1
+						\end{pmatrix}
+						\begin{pmatrix}
+							1 & 1\\
+							1 & -1
+						\end{pmatrix}\\
+				& = \frac{1}{2} 
+						\begin{pmatrix}
+							2 & 0\\
+							0 & 2
+						\end{pmatrix}\\
+				& = \begin{pmatrix}
+					1 & 0\\
+					0 & 1
+				\end{pmatrix}\\	
+			    & = I
+		\end{align*}
+	So $H^TH = HH^T = I$\\\\
+	Therefore $H$ be unitary.
+	\item What is a joint 3-qubit state of $\ket{0}\otimes \ket{01}$? Is it entangled?\\
+	\textbf{Definition}: An entangled state of a composite system is a state that cannot be written as a product state of the component systems.\\\\
+	Consider
+	\begin{align*}
+		\ket{0}\otimes \ket{01} &= \begin{bmatrix}
+													1\\
+													0
+												\end{bmatrix}
+											\otimes
+											\begin{bmatrix}
+												0\\
+												0\\
+												1\\
+												0
+											\end{bmatrix}\\
+										&= \begin{bmatrix}
+											0\\
+											0\\
+											0\\
+											0\\
+											1\\
+											0\\
+											0\\
+											0
+										\end{bmatrix}\\
+									&= \ket{001}
+	\end{align*}
+
+	$\ket{001}$ is not entangled. Because $\ket{001}$ can be written as a product state of
+	$$(1\ket{0} + 0\ket{1})(1\ket{0} + 0\ket{1})(0\ket{0} + 1\ket{1})$$
+	\item What is the EPR pairs? Is it an entangled state?\\
+	Ans:\\
+	%%https://en.wikipedia.org/wiki/Bell_state#cite_note-:0-3
+	\textbf{EPR pairs} (or Bell states) are specific quantum states of two qubits that represent the simplest examples of quantum entanglement.\\\\
+	
+	For the four basic two-qubit inputs, $\ket{00}, \ket{01}, \ket{10}, \ket{11},$ the circuit outputs a final Bell state in accordance with the equation
+	
+	\begin{equation*}
+		\ket{\beta(x, y)} = \frac{\ket{0, y} + (-1)^x\ket{1, Y}}{\sqrt{2}}
+	\end{equation*}
+
+where $Y$ is the negation of $y$\\
+Let 
+$$\ket{\Psi_1} = \alpha_1\ket{0} + \beta_1\ket{1}$$
+$$\ket{\Psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$
+Consider
+\begin{align*}
+		\ket{\beta(x, y)} &=\ket{\Psi_1\Psi_2}\\
+		&=\alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} + \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}
+\end{align*}
+
+\textbf{case} $(x, y) = (0, 0)$
+$$\frac{\ket{00} + \ket{11}}{\sqrt{2}} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} + \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$
+$\alpha_1\alpha_2 = \beta_1\beta_2  = \frac{1}{\sqrt{2}} \Longrightarrow \alpha_1\beta_2 \not = 0 \text{\quad and \quad} \beta_1\alpha_2 \not = 0$
+Contradiction!\\
+
+\textbf{case} $(x, y) = (0, 1)$
+$$\frac{\ket{01} + \ket{10}}{\sqrt{2}} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} + \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$
+$\alpha_1\beta_2 = \beta_1\alpha_2  = \frac{1}{\sqrt{2}} \Longrightarrow \alpha_1\alpha_2 \not = 0 \text{\quad and \quad} \beta_1\beta_2 \not = 0$
+Contradiction!\\
+
+\textbf{case} $(x, y) = (1, 0)$
+$$\frac{\ket{00} - \ket{11}}{\sqrt{2}} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} + \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$
+$\alpha_1\alpha_2 =  \frac{1}{\sqrt{2}} \text{\quad and \quad} \beta_1\beta_2  =- \frac{1}{\sqrt{2}} \Longrightarrow \alpha_1\beta_2 \not = 0 \text{\quad and \quad} \beta_1\alpha_2 \not = 0$\\
+Contradiction!\\
+
+\textbf{case} $(x, y) = (1, 1)$
+$$\frac{\ket{01} - \ket{10}}{\sqrt{2}} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} + \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$
+$\alpha_1\beta_2 = \frac{1}{\sqrt{2}} \text{\quad and \quad}  \beta_1\alpha_2  = -\frac{1}{\sqrt{2}} \Longrightarrow \alpha_1\alpha_2 \not = 0 \text{\quad and \quad} \beta_1\beta_2 \not = 0$\\
+Contradiction!\\
+
+So, $\ket{\beta(x, y)}$ cannot be written as a product state of the component systems.
+Therefore $\ket{\beta(x, y)}$ is entangled.
+\end{enumerate}
+\end{document}
